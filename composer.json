@@ -1,7 +1,7 @@
 {
     "name": "drewwalton19216801/valet-gentoo",
     "description": "A more enjoyable local development experience for Gentoo Linux.",
-    "keywords": ["laravel", "zonda", "wwdhhd", "ubuntu", "fedora", "arch", "linux", "valet"],
+    "keywords": ["laravel", "zonda", "wwdhhd", "gentoo", "linux", "valet"],
     "license": "MIT",
     "authors": [
         {
