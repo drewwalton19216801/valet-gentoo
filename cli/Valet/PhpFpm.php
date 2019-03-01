@@ -120,7 +120,7 @@ class PhpFpm
      */
     public function getVersion()
     {
-        return explode('php', basename($this->files->readLink('/usr/bin/php')))[1];
+        return (float)phpversion();
     }
 
     /**
