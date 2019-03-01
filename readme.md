@@ -1,10 +1,10 @@
 <p align="center">Valet Gentoo</p>
 
 <p align="center">
-<a href="https://packagist.org/packages/drewwalton19216801/valet-gentoo"><img src="https://poser.pugx.org/cpriego/valet-linux/downloads.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/drewwalton19216801/valet-gentoo"><img src="https://poser.pugx.org/cpriego/valet-linux/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/drewwalton19216801/valet-gentoo"><img src="https://poser.pugx.org/cpriego/valet-linux/v/unstable.svg" alt="Latest Unstable Version"></a>
-<a href="https://packagist.org/packages/drewwalton19216801/valet-gentoo"><img src="https://poser.pugx.org/cpriego/valet-linux/license.svg" alt="License"></a>
+<a href="https://packagist.org/packages/drewwalton19216801/valet-gentoo"><img src="https://poser.pugx.org/drewwalton19216801/valet-gentoo/downloads.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/drewwalton19216801/valet-gentoo"><img src="https://poser.pugx.org/drewwalton19216801/valet-gentoo/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/drewwalton19216801/valet-gentoo"><img src="https://poser.pugx.org/drewwalton19216801/valet-gentoo/v/unstable.svg" alt="Latest Unstable Version"></a>
+<a href="https://packagist.org/packages/drewwalton19216801/valet-gentoo"><img src="https://poser.pugx.org/drewwalton19216801/valet-gentoo/license.svg" alt="License"></a>
 </p>
 
 ## Introduction
