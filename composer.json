@@ -1,6 +1,6 @@
 {
-    "name": "cpriego/valet-linux",
-    "description": "A more enjoyable local development experience for Linux.",
+    "name": "drewwalton19216801/valet-gentoo",
+    "description": "A more enjoyable local development experience for Gentoo Linux.",
     "keywords": ["laravel", "zonda", "wwdhhd", "ubuntu", "fedora", "arch", "linux", "valet"],
     "license": "MIT",
     "authors": [
@@ -19,6 +19,10 @@
         {
             "name": "Leonardo Nodari",
             "email": "nodarileonardo@gmail.com"
+        },
+        {
+            "name": "Drew Walton",
+            "email": "drewwalton19216801@gmail.com"
         }
     ],
     "autoload": {

@@ -6,19 +6,32 @@ use DomainException;
 use Valet\CommandLine;
 use Valet\Contracts\PackageManager;
 
-class Dnf implements PackageManager
+class Portage implements PackageManager
 {
     public $cli;
 
     /**
-     * Create a new Apt instance.
+     * Create a new Pacman instance.
      *
-     * @param  CommandLine $cli
+     * @param  CommandLine  $cli
      * @return void
      */
     public function __construct(CommandLine $cli)
     {
         $this->cli = $cli;
+    }
+
+    /**
+     * Get array of installed packages
+     *
+     * @param  string  $package
+     * @return array
+     */
+    public function packages($package)
+    {
+        $query = "qlist -I {$package}";
+
+        return explode(PHP_EOL, $this->cli->run($query));
     }
 
     /**
@@ -29,11 +42,7 @@ class Dnf implements PackageManager
      */
     public function installed($package)
     {
-        $query = "dnf list installed {$package} | grep {$package} | sed 's_  _\\t_g' | sed 's_\\._\\t_g' | cut -f 1";
-
-        $packages = explode(PHP_EOL, $this->cli->run($query));
-
-        return in_array($package, $packages);
+        return in_array($package, $this->packages($package));
     }
 
     /**
@@ -44,7 +53,7 @@ class Dnf implements PackageManager
      */
     public function ensureInstalled($package)
     {
-        if (!$this->installed($package)) {
+        if (! $this->installed($package)) {
             $this->installOrFail($package);
         }
     }
@@ -57,12 +66,12 @@ class Dnf implements PackageManager
      */
     public function installOrFail($package)
     {
-        output('<info>[' . $package . '] is not installed, installing it now via Dnf...</info> 🍻');
+        output('<info>['.$package.'] is not installed, installing it now via Portage...</info> 🍻');
 
-        $this->cli->run(trim('dnf install -y ' . $package), function ($exitCode, $errorOutput) use ($package) {
+        $this->cli->run(trim('emerge '.$package), function ($exitCode, $errorOutput) use ($package) {
             output($errorOutput);
 
-            throw new DomainException('Dnf was unable to install [' . $package . '].');
+            throw new DomainException('Portage was unable to install ['.$package.'].');
         });
     }
 
@@ -77,7 +86,7 @@ class Dnf implements PackageManager
     }
 
     /**
-     * Restart dnsmasq in Fedora.
+     * Restart dnsmasq in Ubuntu.
      */
     public function nmRestart($sm)
     {
@@ -92,8 +101,8 @@ class Dnf implements PackageManager
     public function isAvailable()
     {
         try {
-            $output = $this->cli->run('which dnf', function ($exitCode, $output) {
-                throw new DomainException('Dnf not available');
+            $output = $this->cli->run('which emerge', function ($exitCode, $output) {
+                throw new DomainException('Portage not available');
             });
 
             return $output != '';

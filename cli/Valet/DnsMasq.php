@@ -72,7 +72,7 @@ class DnsMasq
         $optDir  = '/opt/valet-linux';
         $script  = $optDir.'/valet-dns';
 
-        $this->pm->ensureInstalled('inotify-tools');
+        $this->pm->ensureInstalled('sys-fs/inotify-tools');
         $this->files->remove($optDir);
         $this->files->ensureDirExists($optDir);
         $this->files->put($script, $this->files->get(__DIR__.'/../stubs/valet-dns'));
@@ -142,7 +142,7 @@ class DnsMasq
      */
     public function dnsmasqSetup()
     {
-        $this->pm->ensureInstalled('dnsmasq');
+        $this->pm->ensureInstalled('net-dns/dnsmasq');
         $this->sm->enable('dnsmasq');
 
         $this->files->ensureDirExists('/etc/NetworkManager/conf.d');

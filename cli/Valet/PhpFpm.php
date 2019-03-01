@@ -39,8 +39,8 @@ class PhpFpm
      */
     public function install()
     {
-        if (! $this->pm->installed("php{$this->version}-fpm")) {
-            $this->pm->ensureInstalled("php{$this->version}-fpm");
+        if (! $this->pm->installed("dev-lang/php")) {
+            $this->pm->ensureInstalled("dev-lang/php");
             $this->sm->enable($this->fpmServiceName());
         }
 
@@ -130,7 +130,7 @@ class PhpFpm
      */
     public function fpmServiceName()
     {
-        $service = 'php'.$this->version.'-fpm';
+        $service = 'php-fpm@'.$this->version;
         $status = $this->sm->status($service);
 
         if (strpos($status, 'not-found') || strpos($status, 'not be found')) {
@@ -148,10 +148,7 @@ class PhpFpm
     public function fpmConfigPath()
     {
         return collect([
-            '/etc/php/'.$this->version.'/fpm/pool.d', // Ubuntu
-            '/etc/php'.$this->version.'/fpm/pool.d', // Ubuntu
-            '/etc/php-fpm.d', // Fedora
-            '/etc/php/php-fpm.d', // Arch
+            '/etc/php/fpm-php'.$this->version.'/fpm.d', // Gentoo
         ])->first(function ($path) {
             return is_dir($path);
         }, function () {
